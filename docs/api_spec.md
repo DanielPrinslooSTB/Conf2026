@@ -155,7 +155,7 @@ Create a new dispute, run the triage engine, and return the created dispute with
 - customerId (number, required) — ID of an existing customer
 - paymentType (string, required) — one of "Card Payment", "EFT", "Internal Transfer"
 - issueCategory (string, required) — must be valid for the selected paymentType
-- transactionAmount (number, required) — positive number representing the transaction value
+- transactionAmount (number, required) — positive number representing the transaction value in ZAR (South African Rand)
 - transactionDate (string, required) — ISO 8601 date string (e.g. "2026-06-20")
 - transactionStatus (string, required) — one of "Completed", "Failed", "Pending"
 

@@ -88,7 +88,7 @@
   - Customer name
   - Payment type
   - Issue category
-  - Transaction amount (formatted as currency)
+  - Transaction amount (formatted as ZAR currency, e.g. R1,500.00)
   - Transaction date (formatted date)
   - Transaction status
   - Dispute creation date (formatted date)
@@ -101,7 +101,7 @@
 - customer.name (string)
 - paymentType (string)
 - issueCategory (string)
-- transaction.amount (number, formatted as currency)
+- transaction.amount (number, formatted as ZAR currency, e.g. R1,500.00)
 - transaction.date (formatted date)
 - transaction.status (string)
 - createdAt (formatted date)
