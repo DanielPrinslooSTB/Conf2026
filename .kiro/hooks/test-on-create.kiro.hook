@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "Run Tests on Create",
+  "description": "Runs Vitest test suite when new TypeScript files are created to ensure new code has passing tests from the start",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "**/*.ts",
+      "**/*.tsx"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npx vitest --run"
+  }
+}
