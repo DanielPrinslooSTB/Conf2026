@@ -68,7 +68,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-002, REQ-029
+**Requirements:** REQ-001, REQ-017
 
 ---
 
@@ -143,7 +143,7 @@ Error example (404):
 }
 ```
 
-**Requirements:** REQ-030, REQ-032
+**Requirements:** REQ-018, REQ-020
 
 ---
 
@@ -243,7 +243,7 @@ Error example (400):
 - transactionDate: required, must be a valid ISO 8601 date string
 - transactionStatus: required, must be one of "Completed", "Failed", "Pending"
 
-**Requirements:** REQ-031, REQ-033
+**Requirements:** REQ-019, REQ-020
 
 ---
 
@@ -297,7 +297,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-034, REQ-035, REQ-036, REQ-037, REQ-038
+**Requirements:** REQ-021
 
 ---
 
@@ -329,7 +329,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-004
+**Requirements:** REQ-003
 
 ---
 
