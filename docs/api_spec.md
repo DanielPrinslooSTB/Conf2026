@@ -68,7 +68,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-002, REQ-029
+**Requirements:** REQ-001, REQ-017
 
 ---
 
@@ -143,7 +143,7 @@ Error example (404):
 }
 ```
 
-**Requirements:** REQ-030, REQ-032
+**Requirements:** REQ-018, REQ-020
 
 ---
 
@@ -155,7 +155,7 @@ Create a new dispute, run the triage engine, and return the created dispute with
 - customerId (number, required) — ID of an existing customer
 - paymentType (string, required) — one of "Card Payment", "EFT", "Internal Transfer"
 - issueCategory (string, required) — must be valid for the selected paymentType
-- transactionAmount (number, required) — positive number representing the transaction value
+- transactionAmount (number, required) — positive number representing the transaction value in ZAR (South African Rand)
 - transactionDate (string, required) — ISO 8601 date string (e.g. "2026-06-20")
 - transactionStatus (string, required) — one of "Completed", "Failed", "Pending"
 
@@ -243,7 +243,7 @@ Error example (400):
 - transactionDate: required, must be a valid ISO 8601 date string
 - transactionStatus: required, must be one of "Completed", "Failed", "Pending"
 
-**Requirements:** REQ-031, REQ-033
+**Requirements:** REQ-019, REQ-020
 
 ---
 
@@ -297,7 +297,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-034, REQ-035, REQ-036, REQ-037, REQ-038
+**Requirements:** REQ-021
 
 ---
 
@@ -329,7 +329,7 @@ Response:
 ]
 ```
 
-**Requirements:** REQ-004
+**Requirements:** REQ-003
 
 ---
 

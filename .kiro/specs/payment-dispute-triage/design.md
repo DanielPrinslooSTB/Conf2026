@@ -463,76 +463,76 @@ export class ApiError extends Error {
 
 For any set of disputes returned by the list endpoint, the disputes SHALL appear sorted by creation date in descending order—each dispute's creation date is greater than or equal to the next dispute's creation date in the list.
 
-**Validates: Requirements 1.2**
+**Validates: REQ-001**
 
 ### Property 2: Payment type constrains issue categories
 
 For any Payment_Type value, the set of valid Issue_Category options returned by the system SHALL exactly match the defined mapping: Card Payment → {Duplicate Debit, Unauthorized Transaction, Failed Transaction, Incorrect Amount}, EFT → {Failed Transfer, Duplicate Debit, Missing Payment}, Internal Transfer → {Failed Transfer, Duplicate Debit, Missing Payment, Unauthorized Transaction}.
 
-**Validates: Requirements 2.2, 7.1, 7.3, 7.4, 7.5**
+**Validates: REQ-004, REQ-021**
 
 ### Property 3: Dispute creation round-trip
 
 For any valid dispute creation input, after submitting through the POST endpoint, the created dispute SHALL be retrievable by its returned ID with all submitted field values preserved and a non-null TriageRecommendation attached.
 
-**Validates: Requirements 2.3, 6.3**
+**Validates: REQ-005, REQ-019**
 
 ### Property 4: Validation rejects incomplete input
 
 For any dispute creation request missing at least one required field (customerId, paymentType, issueCategory, transactionAmount, transactionDate, transactionStatus), the system SHALL return an HTTP 400 response with error details identifying the missing fields.
 
-**Validates: Requirements 2.4, 6.5**
+**Validates: REQ-006, REQ-020**
 
 ### Property 5: Triage output structural completeness
 
 For any valid dispute input evaluated by the Triage Engine, the output SHALL contain exactly one Routing_Action from {Resolve Immediately, Investigate Further, Escalate, Refer to Another Team}, exactly one Priority_Level from {High, Medium, Low}, and a non-empty reasoning array.
 
-**Validates: Requirements 3.1**
+**Validates: REQ-007**
 
 ### Property 6: Amount-based priority assignment
 
 For any dispute, the base Priority_Level SHALL be High when transaction amount > 10000, Medium when 1000 ≤ amount ≤ 10000, and Low when amount < 1000.
 
-**Validates: Requirements 3.2**
+**Validates: REQ-008**
 
 ### Property 7: Age-based priority escalation
 
 For any dispute whose age exceeds 7 days, the final Priority_Level SHALL be one tier above the base amount-derived priority (Low → Medium, Medium → High), and High SHALL remain High.
 
-**Validates: Requirements 3.3**
+**Validates: REQ-009**
 
 ### Property 8: Unauthorized transaction always escalates
 
 For any dispute where Issue_Category is "Unauthorized Transaction", regardless of transaction amount, status, or dispute age, the Routing_Action SHALL be "Escalate".
 
-**Validates: Requirements 3.4**
+**Validates: REQ-010**
 
 ### Property 9: Failed status routes to investigation
 
 For any dispute where transaction status is "Failed" and Issue_Category is not "Unauthorized Transaction", the Routing_Action SHALL be "Investigate Further".
 
-**Validates: Requirements 3.5**
+**Validates: REQ-011**
 
 ### Property 10: Low-value duplicate resolves immediately
 
 For any dispute where transaction amount < 500 and Issue_Category is "Duplicate Debit" and transaction status is not "Failed", the Routing_Action SHALL be "Resolve Immediately".
 
-**Validates: Requirements 3.6**
+**Validates: REQ-012**
 
 ### Property 11: Default routing fallback
 
 For any dispute that does not match the Unauthorized Transaction rule, the Failed status rule, or the Low-value Duplicate rule, the Routing_Action SHALL be "Refer to Another Team".
 
-**Validates: Requirements 3.7**
+**Validates: REQ-013**
 
 ### Property 12: Reasoning transparency
 
 For any triage evaluation, the reasoning explanation SHALL include the name of each rule that fired and the specific attribute values (amount, status, issue category, age) that triggered that rule.
 
-**Validates: Requirements 3.8**
+**Validates: REQ-014**
 
 ### Property 13: Non-existent dispute returns 404
 
 For any dispute ID that does not exist in the database, the GET /api/disputes/:id endpoint SHALL return an HTTP 404 response.
 
-**Validates: Requirements 6.4**
+**Validates: REQ-020**

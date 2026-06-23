@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "Generate Wireframes Before UI Tasks",
+  "description": "Before executing a spec task that involves UI components, verify that wireframes exist in docs/wireframes/ for all screens referenced by the task. If wireframes are missing, generate them from the requirements and UI spec before proceeding with code generation.",
+  "version": "1",
+  "when": {
+    "type": "preTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Before implementing this task, check if it involves UI components (React pages, components, or client-side code). If it does, verify that wireframe files exist in docs/wireframes/ for the screens this task touches. If wireframes are missing, generate them following the format in .kiro/steering/wireframes.md using docs/ui_spec.md and the spec's requirements.md as input sources. Only proceed with task implementation after wireframes are confirmed present."
+  },
+  "workspaceFolderName": "Conf2026",
+  "shortName": "wireframe-before-ui"
+}

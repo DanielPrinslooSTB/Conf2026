@@ -31,7 +31,7 @@
 - Loading: skeleton/shimmer rows in the table area
 - Error: "Unable to load disputes. Please try again."
 
-**Requirements:** REQ-001, REQ-002, REQ-003, REQ-023
+**Requirements:** REQ-001, REQ-002
 
 ---
 
@@ -72,7 +72,7 @@
 - Validation error: field-level red text below each invalid field with specific message (e.g. "Payment type is required", "Issue category is not valid for the selected payment type")
 - Error (server): toast or inline banner "Failed to create dispute. Please try again."
 
-**Requirements:** REQ-004, REQ-005, REQ-006, REQ-007
+**Requirements:** REQ-003, REQ-004, REQ-005, REQ-006
 
 ---
 
@@ -88,7 +88,7 @@
   - Customer name
   - Payment type
   - Issue category
-  - Transaction amount (formatted as currency)
+  - Transaction amount (formatted as ZAR currency, e.g. R1,500.00)
   - Transaction date (formatted date)
   - Transaction status
   - Dispute creation date (formatted date)
@@ -101,7 +101,7 @@
 - customer.name (string)
 - paymentType (string)
 - issueCategory (string)
-- transaction.amount (number, formatted as currency)
+- transaction.amount (number, formatted as ZAR currency, e.g. R1,500.00)
 - transaction.date (formatted date)
 - transaction.status (string)
 - createdAt (formatted date)
@@ -121,7 +121,7 @@
 - Not found: "Dispute not found. It may have been deleted." with link back to dashboard
 - Error: "Unable to load dispute details. Please try again."
 
-**Requirements:** REQ-021, REQ-022, REQ-023, REQ-024
+**Requirements:** REQ-015
 
 ---
 
@@ -136,7 +136,7 @@
 - Medium — amber/orange background, dark text, label "Medium"
 - Low — green background, white text, label "Low"
 
-**Requirements:** REQ-023
+**Requirements:** REQ-015
 
 ---
 
@@ -150,7 +150,7 @@
 - Resolve Immediately — green styling, icon (e.g. checkmark)
 - Refer to Another Team — blue/neutral styling, icon (e.g. arrow right)
 
-**Requirements:** REQ-024
+**Requirements:** REQ-015
 
 ---
 
@@ -163,7 +163,7 @@
 - Navigation link: "Disputes" (links to `/`)
 - Navigation link: "New Dispute" (links to `/disputes/new`)
 
-**Requirements:** REQ-003
+**Requirements:** REQ-002
 
 ---
 
