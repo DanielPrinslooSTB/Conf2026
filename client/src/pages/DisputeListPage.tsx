@@ -209,6 +209,12 @@ export function DisputeListPage() {
     return (
       <div className="text-center py-12">
         <p className="text-red-600">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 inline-block bg-brand-blue-800 text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-brand-blue-600 transition-colors"
+        >
+          Try Again
+        </button>
       </div>
     );
   }
