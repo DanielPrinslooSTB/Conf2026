@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  accountNumber String    @unique
+  createdAt     DateTime  @default(now())
+  disputes      Dispute[]
+}
+
+model Transaction {
+  id        Int       @id @default(autoincrement())
+  amount    Float
+  date      DateTime
+  status    String    // "Completed", "Failed", "Pending"
+  type      String    // "Card Payment", "EFT", "Internal Transfer"
+  reference String    @unique
+  createdAt DateTime  @default(now())
+  disputes  Dispute[]
+}
+
+model Dispute {
+  id            Int       @id @default(autoincrement())
+  customerId    Int
+  transactionId Int
+  paymentType   String    // "Card Payment", "EFT", "Internal Transfer"
+  issueCategory String    // e.g., "Duplicate Debit", "Unauthorized Transaction"
+  status        String    @default("Open") // "Open", "In Progress", "Resolved"
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  customer             Customer              @relation(fields: [customerId], references: [id])
+  transaction          Transaction           @relation(fields: [transactionId], references: [id])
+  triageRecommendation TriageRecommendation?
+}
+
+model TriageRecommendation {
+  id            Int      @id @default(autoincrement())
+  disputeId     Int      @unique
+  routingAction String   // "Resolve Immediately", "Investigate Further", "Escalate", "Refer to Another Team"
+  priorityLevel String   // "High", "Medium", "Low"
+  reasoning     String   // JSON string containing rule names and attribute values
+  createdAt     DateTime @default(now())
+
+  dispute Dispute @relation(fields: [disputeId], references: [id])
+}

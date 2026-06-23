@@ -1,7 +1,7 @@
 {
   "enabled": true,
   "name": "Run Tests on Create",
-  "description": "Runs Vitest test suite when new TypeScript files are created to ensure new code has passing tests from the start",
+  "description": "Runs Vitest test suite with coverage reporting when new TypeScript files are created to ensure new code has passing tests and coverage from the start",
   "version": "1",
   "when": {
     "type": "fileCreated",
@@ -12,6 +12,6 @@
   },
   "then": {
     "type": "runCommand",
-    "command": "npx vitest --run"
+    "command": "npx vitest --run --reporter=verbose --coverage"
   }
 }

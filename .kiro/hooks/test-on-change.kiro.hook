@@ -1,7 +1,7 @@
 {
   "enabled": true,
   "name": "Run Tests on Change",
-  "description": "Runs Vitest test suite when TypeScript files are created or edited to catch regressions immediately",
+  "description": "Runs Vitest test suite with coverage reporting when TypeScript files are edited to catch regressions and track test coverage",
   "version": "1",
   "when": {
     "type": "fileEdited",
@@ -12,6 +12,6 @@
   },
   "then": {
     "type": "runCommand",
-    "command": "npx vitest --run"
+    "command": "npx vitest --run --reporter=verbose --coverage"
   }
 }
