@@ -56,6 +56,7 @@ export function validateCreateDispute(body: unknown): ValidationResult {
     errors.transactionAmount = "transactionAmount is required";
   } else if (
     typeof data.transactionAmount !== "number" ||
+    !Number.isFinite(data.transactionAmount) ||
     data.transactionAmount <= 0
   ) {
     errors.transactionAmount = "transactionAmount must be a positive number";
